@@ -4,7 +4,6 @@ import cv2
 import sys
 import glob 
 import argparse
-import matplotlib
 import numpy as np
 import tensorflow as tf
 import tensorlayer as tl
@@ -165,7 +164,7 @@ if __name__ == '__main__':
     length = int(cap. get(cv2. CAP_PROP_FRAME_COUNT))
     frame_count = 0
 
-    fourcc = cv2.VideoWriter_fourcc(*'MP4V')
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter('./output/output.mp4', fourcc, 30.0, (400,440))
 
 
