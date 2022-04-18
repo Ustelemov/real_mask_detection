@@ -6,7 +6,7 @@ opencv-contrib-python==4.5.4.58
 opencv-python==3.4.17.63
 opencv-python-headless==4.5.5.64
 tensorlayer==2.2.3
-tensorflow==2.8.0
+intel_tensorflow==2.8.0
 pycocotools==2.0.4
 matplotlib==3.5.1
 filterpy==1.4.5
