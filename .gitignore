@@ -1,0 +1,6 @@
+hyperpose/Weights/lightweight_openpose_mobilenetthin.npz
+hyperpose/Weights/lightweight_openpose.npz
+hyperpose/Weights/newest_vgg19_backbone.npz
+hyperpose/Weights/openpose.npz
+output/
+input/
