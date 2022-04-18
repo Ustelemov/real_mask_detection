@@ -168,48 +168,51 @@ if __name__ == '__main__':
     out = cv2.VideoWriter('./output/output.mp4', fourcc, 30.0, (400,440))
 
 
-    while True:
-        start = time.time()
+    while (cap.isOpened()):
         ret,frame = cap.read()
+        if ret == True:
+            start = time.time()
 
-        frame_count = frame_count + 1
-        print(frame_count," of ", length)
-
-
-
-        # input video already in (1280,720)
-        frame = cv2.resize(frame, (1280,720))
-
-        # get only entrance from image
-        frame = frame[:440,150:550]
+            frame_count = frame_count + 1
+            print(frame_count," of ", length)
 
 
-        image = image_processor.read_image_rgb_float(frame)
-        input_image, scale, pad = image_processor.image_pad_and_scale(image)
-        input_image = np.transpose(input_image,[2,0,1])[np.newaxis,:,:,:]
 
-        # model forward
-        predict_x = model.forward(input_image)
-        
-        # post process
-        humans = post_processor.process(predict_x)[0]
-        # visualize results (restore detected humans)
-        print(f"{len(humans)} humans detected")
-        for human_idx,human in enumerate(humans,start=1):
-            human.unpad(pad)
-            human.unscale(scale)
-        
-        frame = process_image(image=frame, humans=humans, name="result")
+            # input video already in (1280,720)
+            frame = cv2.resize(frame, (1280,720))
 
-        # cv2.imshow('Video', frame)
-        out.write(frame)
+            # get only entrance from image
+            frame = frame[:440,150:550]
 
-        key = cv2.waitKey(1) & 0xFF
 
-        # If the `q` key was pressed, break from the loop
-        if key == ord("q"):
+            image = image_processor.read_image_rgb_float(frame)
+            input_image, scale, pad = image_processor.image_pad_and_scale(image)
+            input_image = np.transpose(input_image,[2,0,1])[np.newaxis,:,:,:]
+
+            # model forward
+            predict_x = model.forward(input_image)
+            
+            # post process
+            humans = post_processor.process(predict_x)[0]
+            # visualize results (restore detected humans)
+            print(f"{len(humans)} humans detected")
+            for human_idx,human in enumerate(humans,start=1):
+                human.unpad(pad)
+                human.unscale(scale)
+            
+            frame = process_image(image=frame, humans=humans, name="result")
+
+            # cv2.imshow('Video', frame)
+            out.write(frame)
+
+            key = cv2.waitKey(1) & 0xFF
+
+            # If the `q` key was pressed, break from the loop
+            if key == ord("q"):
+                break
+            print("time: ", time.time()-start)
+        else:
             break
-        print("time: ", time.time()-start)
 
     out.release()
     cap.release()
