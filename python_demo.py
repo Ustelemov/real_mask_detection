@@ -58,7 +58,7 @@ class FaceData:
         self.faces = dict()
         self.path = "./output/saved_faces"
         self.detections_count_threshold = 10
-        self.detections_score_threshold = 0.4
+        self.detections_score_threshold = 0.6
 
     def add(self, id, arr, score):
         if id not in self.faces:
@@ -126,7 +126,7 @@ def process_image(image, humans, name):
         score = human.get_head_score()
         distance = bottom_right[1] - top_left[1] 
 
-        if score > 0.25 and distance > 1:
+        if score > 0.4 and distance > 1:
             faces.append([top_left[0], top_left[1], bottom_right[0], bottom_right[1], score])
 
     trackers, removed = tracker.update(np.array(faces))
@@ -202,7 +202,7 @@ if __name__ == '__main__':
             
             frame = process_image(image=frame, humans=humans, name="result")
 
-            # cv2.imshow('Video', frame)
+            cv2.imshow('Video', frame)
             out.write(frame)
 
             key = cv2.waitKey(1) & 0xFF
