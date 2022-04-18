@@ -19,10 +19,6 @@ from __future__ import print_function
 
 import os
 import numpy as np
-import matplotlib
-matplotlib.use('TkAgg')
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
 from skimage import io
 
 import glob
@@ -260,3 +256,4 @@ class Sort(object):
     if(len(ret)>0):
       return np.concatenate(ret), removed
     return np.empty((0,5)), removed
+
