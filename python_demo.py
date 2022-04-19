@@ -79,9 +79,11 @@ class FaceData:
             return
 
         score = 0
+        scores = []
         img = []
 
         for data in dataArr[-self.detections_count_threshold:]:
+            scores.append(data[1])
             if data[1] > score:
                 score = data[1]
                 img = data[0]
@@ -92,6 +94,9 @@ class FaceData:
 
 
         mkdir(self.path)
+
+        print("top score: ", score)
+        print("scores: ", scores)
 
         h,w,c = img.shape
         id = str(uuid.uuid1())
