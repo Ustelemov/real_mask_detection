@@ -58,7 +58,7 @@ class FaceData:
         self.faces = dict()
         self.path = "./output/saved_faces"
         self.detections_count_threshold = 10
-        self.detections_score_threshold = 0.65
+        self.detections_score_threshold = 0.75
 
     def add(self, id, arr, score):
         if id not in self.faces:
@@ -130,7 +130,7 @@ def process_image(image, humans, name):
         score = human.get_head_score()
         distance = bottom_right[1] - top_left[1] 
 
-        if score > 0.55 and distance > 5:
+        if score > 0.65 and distance > 5:
             faces.append([top_left[0], top_left[1], bottom_right[0], bottom_right[1], score])
 
     trackers, removed = tracker.update(np.array(faces))
@@ -169,7 +169,7 @@ if __name__ == '__main__':
     frame_count = 0
 
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    out = cv2.VideoWriter('./output/output.mp4', fourcc, 30.0, (400,440))
+    out = cv2.VideoWriter('./output/output.mp4', fourcc, 30.0, (400,400))
 
 
     while (cap.isOpened()):
@@ -185,7 +185,7 @@ if __name__ == '__main__':
             frame = cv2.resize(frame, (1280,720))
 
             # get only entrance from image
-            frame = frame[:440,150:550]
+            frame = frame[:400,150:550]
 
 
             image = image_processor.read_image_rgb_float(frame)
