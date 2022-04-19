@@ -11,6 +11,7 @@ from hyperpose import Config,Model
 from hyperpose.Model.common import image_float_to_uint8
 import time
 from sort import Sort
+import uuid
 
 ### Model start
 
@@ -57,8 +58,8 @@ class FaceData:
     def __init__(self):
         self.faces = dict()
         self.path = "./output/saved_faces"
-        self.detections_count_threshold = 10
-        self.detections_score_threshold = 0.85
+        self.detections_count_threshold = 15
+        self.detections_score_threshold = 0.80
 
     def add(self, id, arr, score):
         if id not in self.faces:
@@ -93,6 +94,8 @@ class FaceData:
         mkdir(self.path)
 
         h,w,c = img.shape
+        id = str(uuid.uuid1())
+
         cv2.imwrite("{0}/{1}_{2}_{3}_{4}.jpg".format(self.path, id, time.time(), w,h), img)
 
         img_64 = cv2.resize(img, (64,64))
@@ -131,7 +134,7 @@ def process_image(image, humans, name):
         distance_h = bottom_right[1] - top_left[1] 
         distance_w = bottom_right[0] - top_left[0] 
 
-        if score > 0.80 and distance_h > 10 and distance_w > 10:
+        if score > 0.75 and distance_h > 10 and distance_w > 10:
             faces.append([top_left[0], top_left[1], bottom_right[0], bottom_right[1], score])
 
     trackers, removed = tracker.update(np.array(faces))
@@ -154,9 +157,6 @@ def process_image(image, humans, name):
         face_data.remove(rm)
 
     return result_image
-
-
-
 
 if __name__ == '__main__':
     mkdir("output")
@@ -187,7 +187,6 @@ if __name__ == '__main__':
 
             # get only entrance from image
             frame = frame[:400,150:550]
-
 
             image = image_processor.read_image_rgb_float(frame)
             input_image, scale, pad = image_processor.image_pad_and_scale(image)
