@@ -70,6 +70,10 @@ class FaceData:
             return
         
         dataArr = self.faces[id]
+
+        #remove element
+        del self.faces[id]
+
         if len(dataArr) < self.detections_count_threshold:
             return
 
@@ -126,7 +130,7 @@ def process_image(image, humans, name):
         score = human.get_head_score()
         distance = bottom_right[1] - top_left[1] 
 
-        if score > 0.55 and distance > 1:
+        if score > 0.55 and distance > 5:
             faces.append([top_left[0], top_left[1], bottom_right[0], bottom_right[1], score])
 
     trackers, removed = tracker.update(np.array(faces))
@@ -170,12 +174,11 @@ if __name__ == '__main__':
 
     while (cap.isOpened()):
         ret,frame = cap.read()
-        if ret == True:
+        if ret:
             start = time.time()
 
             frame_count = frame_count + 1
             print(frame_count," of ", length)
-
 
 
             # input video already in (1280,720)
