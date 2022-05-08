@@ -54,7 +54,7 @@ onnx_model = "onnx_models/TinyVGG-V2-HW=342x368.onnx"
 onnx_model_width = 368
 onnx_model_height = 342
 
-image_processor = ImageProcessorClass(input_h=onnx_model_height, input_w=onnx_model_width)
+image_processor = ImageProcessorClass(input_h=model.hin, input_w=model.win)
 
 so = ort.SessionOptions()
 # so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
@@ -215,8 +215,8 @@ if __name__ == '__main__':
             # get only entrance from image
             frame = frame[:400,150:550]
 
-            # img_res = cv2.resize(frame, (onnx_model_width,onnx_model_height))
-            # img_res.resize((1,3,onnx_model_height,onnx_model_width))
+            img_res = cv2.resize(frame, (onnx_model_width,onnx_model_height))
+            img_res.resize((1,3,model.hin,model.win))
 
             # data = json.dumps({'data':img_res.tolist()})
             # data = np.array(json.loads(data)['data']).astype('float32')
