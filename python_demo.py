@@ -64,7 +64,7 @@ so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
 
 
 onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so)
-# onnx_model_session.set_providers(['CUDAExecutionProvider'])
+onnx_model_session.set_providers(['CUDAExecutionProvider'])
 onnx_input_name = onnx_model_session.get_inputs()[0].name
 onnx_output_name_0 = onnx_model_session.get_outputs()[0].name
 onnx_output_name_1 = onnx_model_session.get_outputs()[1].name
