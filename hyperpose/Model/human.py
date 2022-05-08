@@ -146,6 +146,9 @@ class Human:
                 hip = self.body_parts[hip_key]
 
                 d = hip.y - neck.y
+                if d < 5:
+                    return (False, None, None)
+
                 
                 top_left_x = int(neck.x-d/2)
                 top_lefx_x = top_left_x if top_left_x > 0 else 0

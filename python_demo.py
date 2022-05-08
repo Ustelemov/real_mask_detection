@@ -12,6 +12,10 @@ from hyperpose.Model.common import image_float_to_uint8
 import time
 from sort import Sort
 import uuid
+import onnxruntime as ort
+import json
+import yaml
+
 
 ### Model start
 
@@ -30,6 +34,7 @@ Config.set_model_backbone(Config.BACKBONE.Vggtiny)
 # Config.set_model_backbone(Config.BACKBONE.Default)
 config = Config.get_config()
 
+
 # contruct model and processors
 model = Model.get_model(config)
 # post processor
@@ -38,12 +43,31 @@ post_processor = PostProcessorClass(parts=model.parts, limbs=model.limbs, hin=mo
                                 wout=model.wout, colors=model.colors)
 # image processor
 ImageProcessorClass = Model.get_imageprocessor()
-image_processor = ImageProcessorClass(input_h=model.hin, input_w=model.win)
 
 # load weights
 model.load_weights(hyperpose_weights_path, format="npz_dict")
 model.eval()
 
+# onnx model
+onnx_model = "onnx_models/TinyVGG-V2-HW=342x368.onnx"
+onnx_model_width = 368
+onnx_model_height = 342
+
+image_processor = ImageProcessorClass(input_h=onnx_model_height, input_w=onnx_model_width)
+
+so = ort.SessionOptions()
+# so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
+# so.intra_op_num_threads = 4
+so.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
+# so.inter_op_num_threads = 4
+so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
+
+
+onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so)
+# onnx_model_session.set_providers(['CUDAExecutionProvider'])
+onnx_input_name = onnx_model_session.get_inputs()[0].name
+onnx_output_name_0 = onnx_model_session.get_outputs()[0].name
+onnx_output_name_1 = onnx_model_session.get_outputs()[1].name
 
 ### Model end
 
@@ -95,9 +119,6 @@ class FaceData:
 
         mkdir(self.path)
 
-        print("top score: ", score)
-        print("scores: ", scores)
-
         h,w,c = img.shape
         id = str(uuid.uuid1())
 
@@ -128,6 +149,9 @@ def process_image(image, humans, name):
     faces = []
     for human in humans:
 
+        if human.get_score() < 0.1:
+            break
+
         result_image = human.draw_human(result_image)
 
         ok, top_left, bottom_right = human.get_head_bboxes(image)
@@ -139,7 +163,7 @@ def process_image(image, humans, name):
         distance_h = bottom_right[1] - top_left[1] 
         distance_w = bottom_right[0] - top_left[0] 
 
-        if score > 0.75 and distance_h > 10 and distance_w > 10:
+        if distance_h > 10 and distance_w > 10:
             faces.append([top_left[0], top_left[1], bottom_right[0], bottom_right[1], score])
 
     trackers, removed = tracker.update(np.array(faces))
@@ -181,7 +205,6 @@ if __name__ == '__main__':
     while (cap.isOpened()):
         ret,frame = cap.read()
         if ret:
-            start = time.time()
 
             frame_count = frame_count + 1
             print(frame_count," of ", length)
@@ -193,15 +216,30 @@ if __name__ == '__main__':
             # get only entrance from image
             frame = frame[:400,150:550]
 
+            # img_res = cv2.resize(frame, (onnx_model_width,onnx_model_height))
+            # img_res.resize((1,3,onnx_model_height,onnx_model_width))
+
+            # data = json.dumps({'data':img_res.tolist()})
+            # data = np.array(json.loads(data)['data']).astype('float32')
+
+
             image = image_processor.read_image_rgb_float(frame)
             input_image, scale, pad = image_processor.image_pad_and_scale(image)
             input_image = np.transpose(input_image,[2,0,1])[np.newaxis,:,:,:]
 
-            # model forward
-            predict_x = model.forward(input_image)
-            
+            #model forward
+            # predict_x = model.forward(input_image)
+            data = json.dumps({'data':input_image.tolist()})
+            data = np.array(json.loads(data)['data']).astype('float32')
+            start = time.time()
+            conf_map, paf_map, conf_map1, paf_map1 = onnx_model_session.run([onnx_output_name_0, onnx_output_name_1, onnx_output_name_0, onnx_output_name_1], {onnx_input_name: data, onnx_input_name: data})
+
+            predict_x = dict()
+            predict_x['conf_map'] = conf_map
+            predict_x['paf_map'] = paf_map
             # post process
             humans = post_processor.process(predict_x)[0]
+            print("time: ", time.time()-start)
             # visualize results (restore detected humans)
             print(f"{len(humans)} humans detected")
             for human_idx,human in enumerate(humans,start=1):
@@ -210,7 +248,7 @@ if __name__ == '__main__':
             
             frame = process_image(image=frame, humans=humans, name="result")
 
-            # cv2.imshow('Video', frame)
+            cv2.imshow('Video', frame)
             out.write(frame)
 
             key = cv2.waitKey(1) & 0xFF
@@ -218,7 +256,6 @@ if __name__ == '__main__':
             # If the `q` key was pressed, break from the loop
             if key == ord("q"):
                 break
-            print("time: ", time.time()-start)
         else:
             break
 

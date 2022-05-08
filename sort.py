@@ -220,7 +220,6 @@ class Sort(object):
     if len(dets) == 0:
       dets = np.empty((0,5))
 
-    # get predicted locations from existing trackers.
     trks = np.zeros((len(self.trackers), 5))
     to_del = []
     ret = []
@@ -235,11 +234,9 @@ class Sort(object):
       self.trackers.pop(t)
     matched, unmatched_dets, unmatched_trks = associate_detections_to_trackers(dets,trks, self.iou_threshold)
 
-    # update matched trackers with assigned detections
     for m in matched:
       self.trackers[m[1]].update(dets[m[0], :])
 
-    # create and initialise new trackers for unmatched detections
     for i in unmatched_dets:
         trk = KalmanBoxTracker(dets[i,:])
         self.trackers.append(trk)
@@ -249,7 +246,6 @@ class Sort(object):
         if (trk.time_since_update < 1) and (trk.hit_streak >= self.min_hits or self.frame_count <= self.min_hits):
           ret.append(np.concatenate((d,[trk.id+1],[trk.score])).reshape(1,-1)) # +1 as MOT benchmark requires positive
         i -= 1
-        # remove dead tracklet
         if(trk.time_since_update > self.max_age):
           removed.append(trk.id+1)
           self.trackers.pop(i)
