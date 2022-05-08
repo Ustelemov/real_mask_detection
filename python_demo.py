@@ -248,7 +248,7 @@ if __name__ == '__main__':
             
             frame = process_image(image=frame, humans=humans, name="result")
 
-            cv2.imshow('Video', frame)
+            # cv2.imshow('Video', frame)
             out.write(frame)
 
             key = cv2.waitKey(1) & 0xFF
