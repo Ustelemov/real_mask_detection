@@ -16,6 +16,7 @@ import onnxruntime as ort
 import json
 import yaml
 
+print(ort.get_device())
 
 ### Model start
 
