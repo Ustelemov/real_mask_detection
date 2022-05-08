@@ -63,8 +63,8 @@ so.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
 # so.inter_op_num_threads = 4
 so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
 
-
-onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CUDAExecutionProvider'])
+#CUDAExecutionProvider
+onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CPUExecutionProvider'])
 # onnx_model_session.set_providers(['CUDAExecutionProvider'])
 onnx_input_name = onnx_model_session.get_inputs()[0].name
 onnx_output_name_0 = onnx_model_session.get_outputs()[0].name
@@ -206,10 +206,8 @@ if __name__ == '__main__':
     while (cap.isOpened()):
         ret,frame = cap.read()
         if ret:
-
             frame_count = frame_count + 1
             print(frame_count," of ", length)
-
 
             # input video already in (1280,720)
             frame = cv2.resize(frame, (1280,720))
@@ -229,18 +227,20 @@ if __name__ == '__main__':
             input_image = np.transpose(input_image,[2,0,1])[np.newaxis,:,:,:]
 
             #model forward
-            # predict_x = model.forward(input_image)
-            data = json.dumps({'data':input_image.tolist()})
-            data = np.array(json.loads(data)['data']).astype('float32')
             start = time.time()
-            conf_map, paf_map, conf_map1, paf_map1 = onnx_model_session.run([onnx_output_name_0, onnx_output_name_1, onnx_output_name_0, onnx_output_name_1], {onnx_input_name: data, onnx_input_name: data})
+            predict_x = model.forward(input_image)
+            print("time predict: ", time.time()-start)
+            #data = json.dumps({'data':input_image.tolist()})
+            #data = np.array(json.loads(data)['data']).astype('float32')
+            #conf_map, paf_map = onnx_model_session.run([onnx_output_name_0, onnx_output_name_1], {onnx_input_name: data})
 
-            predict_x = dict()
-            predict_x['conf_map'] = conf_map
-            predict_x['paf_map'] = paf_map
+            # predict_x = dict()
+            # predict_x['conf_map'] = conf_map
+            # predict_x['paf_map'] = paf_map
             # post process
+            start = time.time()
             humans = post_processor.process(predict_x)[0]
-            print("time: ", time.time()-start)
+            print("time post: ", time.time()-start)
             # visualize results (restore detected humans)
             print(f"{len(humans)} humans detected")
             for human_idx,human in enumerate(humans,start=1):
@@ -257,6 +257,7 @@ if __name__ == '__main__':
             # If the `q` key was pressed, break from the loop
             if key == ord("q"):
                 break
+
         else:
             break
 
