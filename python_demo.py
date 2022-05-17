@@ -46,6 +46,7 @@ post_processor = PostProcessorClass(parts=model.parts, limbs=model.limbs, hin=mo
 ImageProcessorClass = Model.get_imageprocessor()
 image_processor = ImageProcessorClass(input_h=model.hin, input_w=model.win)
 
+
 # load weights
 model.load_weights(hyperpose_weights_path, format="npz_dict")
 model.eval()
@@ -55,7 +56,7 @@ onnx_model = "onnx_models/TinyVGG-V2-HW=342x368.onnx"
 onnx_model_width = 368
 onnx_model_height = 342
 
-image_processor = ImageProcessorClass(input_h=model.hin, input_w=model.win)
+image_processor_onnx = ImageProcessorClass(input_h=onnx_model_height, input_w=onnx_model_width)
 
 so = ort.SessionOptions()
 so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
@@ -65,8 +66,8 @@ so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
 # so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
 
 #CUDAExecutionProvider
-onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CPUExecutionProvider','CUDAExecutionProvider'])
-# onnx_model_session.set_providers(['CUDAExecutionProvider'])
+onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CPUExecutionProvider'])
+# onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CUDAExecutionProvider'])
 onnx_input_name = onnx_model_session.get_inputs()[0].name
 onnx_output_name_0 = onnx_model_session.get_outputs()[0].name
 onnx_output_name_1 = onnx_model_session.get_outputs()[1].name
@@ -221,15 +222,19 @@ if __name__ == '__main__':
             input_image, scale, pad = image_processor.image_pad_and_scale(image)
             input_image = np.transpose(input_image,[2,0,1])[np.newaxis,:,:,:]
 
+            image_onnx = image_processor_onnx.read_image_rgb_float(frame)
+            input_image_onnx, scale_onnx, pad_onnx = image_processor_onnx.image_pad_and_scale(image_onnx)
+            input_image_onnx = np.transpose(input_image_onnx,[2,0,1])[np.newaxis,:,:,:]
+
             #model forward
             start = time.time()
             predict_x = model.forward(input_image)
             print("time predict (base): ", time.time()-start)
             start = time.time()
-            data = json.dumps({'data':input_image.tolist()})
+            data = json.dumps({'data':input_image_onnx.tolist()})
             data = np.array(json.loads(data)['data']).astype('float32')
             conf_map, paf_map = onnx_model_session.run([onnx_output_name_0, onnx_output_name_1], {onnx_input_name: data})
-            print("time predict (hyper pose): ", time.time()-start)
+            print("time predict (onnx pose): ", time.time()-start)
 
             # predict_x = dict()
             # predict_x['conf_map'] = conf_map
@@ -246,7 +251,7 @@ if __name__ == '__main__':
             
             frame = process_image(image=frame, humans=humans, name="result")
 
-            cv2.imshow('Video', frame)
+            # cv2.imshow('Video', frame)
             out.write(frame)
 
             key = cv2.waitKey(1) & 0xFF
