@@ -224,7 +224,7 @@ if __name__ == '__main__':
                 print("time_onnx_run ms", (time_onnx_run*1000)/count_print)
                 print("time_onnx_run FPS", 1/(time_onnx_run/count_print))
                 print("time_base_run ms", (time_base_run*1000)/count_print)
-                print("time_base_run FPS", 1/(time_base_run/count_print)))
+                print("time_base_run FPS", 1/(time_base_run/count_print))
                 print("time_post_run ms", (time_post_run*1000)/count_print)
                 print("time_post_run FPS", 1/(time_post_run/count_print))
                 return
