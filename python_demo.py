@@ -50,10 +50,10 @@ image_processor = ImageProcessorClass(input_h=model.hin, input_w=model.win)
 model.load_weights(hyperpose_weights_path, format="npz_dict")
 model.eval()
 
-# # onnx model
-# onnx_model = "onnx_models/TinyVGG-V2-HW=342x368.onnx"
-# onnx_model_width = 368
-# onnx_model_height = 342
+# onnx model
+onnx_model = "onnx_models/TinyVGG-V2-HW=342x368.onnx"
+onnx_model_width = 368
+onnx_model_height = 342
 
 image_processor = ImageProcessorClass(input_h=model.hin, input_w=model.win)
 
