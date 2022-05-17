@@ -8980,3 +8980,2386 @@
 	 3.Neural network backbone pretraining.
 2022-05-09 00:48:31,992 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
 2022-05-09 00:48:31,992 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:15:35,826 [INFO] INFO: Configuration initialized!
+2022-05-09 01:15:35,826 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:15:35,827 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:15:36,654 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:15:36,654 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:15:36,654 [INFO] INFO: Variable Definition:
+2022-05-09 01:15:36,654 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:15:36,654 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:15:36,655 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:15:36,655 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:15:36,655 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:15:36,655 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:15:36,655 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:15:36,656 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:15:36,656 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:15:36,656 [INFO] INFO: Object Definition:
+2022-05-09 01:15:36,656 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:15:36,656 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:15:36,657 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:15:36,657 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:15:36,657 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:15:36,657 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:15:36,658 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:15:36,658 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:15:36,658 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:15:36,658 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:15:36,659 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:15:36,659 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:17:57,219 [INFO] INFO: Configuration initialized!
+2022-05-09 01:17:57,220 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:17:57,222 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:17:58,061 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:17:58,062 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:17:58,062 [INFO] INFO: Variable Definition:
+2022-05-09 01:17:58,062 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:17:58,062 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:17:58,062 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:17:58,062 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:17:58,063 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:17:58,063 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:17:58,063 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:17:58,063 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:17:58,063 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:17:58,063 [INFO] INFO: Object Definition:
+2022-05-09 01:17:58,064 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:17:58,064 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:17:58,064 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:17:58,064 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:17:58,064 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:17:58,064 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:17:58,065 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:17:58,065 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:17:58,065 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:17:58,065 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:17:58,066 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:17:58,066 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:20:07,891 [INFO] INFO: Configuration initialized!
+2022-05-09 01:20:07,892 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:20:07,892 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:20:08,731 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:20:08,731 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:20:08,731 [INFO] INFO: Variable Definition:
+2022-05-09 01:20:08,731 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:20:08,731 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:20:08,731 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:20:08,732 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:20:08,732 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:20:08,732 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:20:08,732 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:20:08,732 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:20:08,732 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:20:08,733 [INFO] INFO: Object Definition:
+2022-05-09 01:20:08,733 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:20:08,733 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:20:08,733 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:20:08,733 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:20:08,733 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:20:08,734 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:20:08,734 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:20:08,734 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:20:08,734 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:20:08,734 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:20:08,734 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:20:08,735 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:20:50,035 [INFO] INFO: Configuration initialized!
+2022-05-09 01:20:50,035 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:20:50,035 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:20:50,962 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:20:50,962 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:20:50,963 [INFO] INFO: Variable Definition:
+2022-05-09 01:20:50,963 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:20:50,963 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:20:50,963 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:20:50,963 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:20:50,963 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:20:50,963 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:20:50,964 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:20:50,964 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:20:50,964 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:20:50,964 [INFO] INFO: Object Definition:
+2022-05-09 01:20:50,964 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:20:50,964 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:20:50,964 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:20:50,965 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:20:50,965 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:20:50,965 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:20:50,965 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:20:50,965 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:20:50,965 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:20:50,965 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:20:50,966 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:20:50,966 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:21:10,774 [INFO] INFO: Configuration initialized!
+2022-05-09 01:21:10,775 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:21:10,775 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:21:11,673 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:21:11,673 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:21:11,673 [INFO] INFO: Variable Definition:
+2022-05-09 01:21:11,673 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:21:11,674 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:21:11,674 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:21:11,674 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:21:11,674 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:21:11,674 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:21:11,674 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:21:11,674 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:21:11,675 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:21:11,675 [INFO] INFO: Object Definition:
+2022-05-09 01:21:11,675 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:21:11,675 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:21:11,675 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:21:11,675 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:21:11,676 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:21:11,676 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:21:11,676 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:21:11,676 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:21:11,676 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:21:11,676 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:21:11,676 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:21:11,677 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:22:12,599 [INFO] INFO: Configuration initialized!
+2022-05-09 01:22:12,599 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:22:12,599 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:22:13,497 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:22:13,498 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:22:13,498 [INFO] INFO: Variable Definition:
+2022-05-09 01:22:13,498 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:22:13,498 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:22:13,498 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:22:13,498 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:22:13,499 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:22:13,499 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:22:13,499 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:22:13,499 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:22:13,499 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:22:13,499 [INFO] INFO: Object Definition:
+2022-05-09 01:22:13,499 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:22:13,500 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:22:13,500 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:22:13,500 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:22:13,500 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:22:13,500 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:22:13,500 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:22:13,500 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:22:13,501 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:22:13,501 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:22:13,501 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:22:13,501 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:23:09,586 [INFO] INFO: Configuration initialized!
+2022-05-09 01:23:09,586 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:23:09,586 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:23:10,539 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:23:10,539 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:23:10,539 [INFO] INFO: Variable Definition:
+2022-05-09 01:23:10,540 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:23:10,540 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:23:10,540 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:23:10,540 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:23:10,540 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:23:10,541 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:23:10,541 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:23:10,541 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:23:10,541 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:23:10,541 [INFO] INFO: Object Definition:
+2022-05-09 01:23:10,541 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:23:10,542 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:23:10,542 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:23:10,542 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:23:10,542 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:23:10,542 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:23:10,542 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:23:10,543 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:23:10,543 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:23:10,543 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:23:10,543 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:23:10,543 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:23:39,516 [INFO] INFO: Configuration initialized!
+2022-05-09 01:23:39,516 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:23:39,517 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:23:40,325 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:23:40,326 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:23:40,326 [INFO] INFO: Variable Definition:
+2022-05-09 01:23:40,326 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:23:40,326 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:23:40,327 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:23:40,327 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:23:40,327 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:23:40,327 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:23:40,327 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:23:40,327 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:23:40,328 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:23:40,328 [INFO] INFO: Object Definition:
+2022-05-09 01:23:40,328 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:23:40,328 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:23:40,328 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:23:40,329 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:23:40,329 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:23:40,329 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:23:40,329 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:23:40,330 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:23:40,330 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:23:40,330 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:23:40,330 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:23:40,330 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:24:29,019 [INFO] INFO: Configuration initialized!
+2022-05-09 01:24:29,020 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:24:29,020 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:24:29,973 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:24:29,973 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:24:29,974 [INFO] INFO: Variable Definition:
+2022-05-09 01:24:29,974 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:24:29,974 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:24:29,974 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:24:29,974 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:24:29,974 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:24:29,975 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:24:29,975 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:24:29,975 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:24:29,975 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:24:29,975 [INFO] INFO: Object Definition:
+2022-05-09 01:24:29,975 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:24:29,975 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:24:29,976 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:24:29,976 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:24:29,976 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:24:29,976 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:24:29,976 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:24:29,976 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:24:29,977 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:24:29,977 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:24:29,977 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:24:29,977 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:25:50,767 [INFO] INFO: Configuration initialized!
+2022-05-09 01:25:50,767 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:25:50,768 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:25:51,702 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:25:51,703 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:25:51,703 [INFO] INFO: Variable Definition:
+2022-05-09 01:25:51,703 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:25:51,703 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:25:51,703 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:25:51,703 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:25:51,704 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:25:51,704 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:25:51,704 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:25:51,704 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:25:51,704 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:25:51,704 [INFO] INFO: Object Definition:
+2022-05-09 01:25:51,704 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:25:51,705 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:25:51,705 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:25:51,705 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:25:51,705 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:25:51,705 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:25:51,705 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:25:51,706 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:25:51,706 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:25:51,706 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:25:51,706 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:25:51,706 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:33:03,334 [INFO] INFO: Configuration initialized!
+2022-05-09 01:33:03,334 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:33:03,334 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:33:04,192 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:33:04,192 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:33:04,192 [INFO] INFO: Variable Definition:
+2022-05-09 01:33:04,192 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:33:04,192 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:33:04,193 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:33:04,193 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:33:04,193 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:33:04,193 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:33:04,193 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:33:04,193 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:33:04,194 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:33:04,194 [INFO] INFO: Object Definition:
+2022-05-09 01:33:04,194 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:33:04,194 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:33:04,194 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:33:04,194 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:33:04,195 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:33:04,195 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:33:04,195 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:33:04,195 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:33:04,195 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:33:04,196 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:33:04,196 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:33:04,196 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:38:34,988 [INFO] INFO: Configuration initialized!
+2022-05-09 01:38:34,988 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:38:34,988 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:38:35,761 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:38:35,762 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:38:35,763 [INFO] INFO: Variable Definition:
+2022-05-09 01:38:35,763 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:38:35,763 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:38:35,763 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:38:35,763 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:38:35,764 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:38:35,764 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:38:35,764 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:38:35,764 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:38:35,764 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:38:35,765 [INFO] INFO: Object Definition:
+2022-05-09 01:38:35,765 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:38:35,765 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:38:35,765 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:38:35,765 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:38:35,766 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:38:35,766 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:38:35,766 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:38:35,766 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:38:35,767 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:38:35,767 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:38:35,767 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:38:35,767 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 01:48:40,336 [INFO] INFO: Configuration initialized!
+2022-05-09 01:48:40,336 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 01:48:40,336 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 01:48:41,157 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 01:48:41,157 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 01:48:41,157 [INFO] INFO: Variable Definition:
+2022-05-09 01:48:41,157 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 01:48:41,158 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 01:48:41,158 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 01:48:41,158 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 01:48:41,158 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 01:48:41,159 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 01:48:41,159 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 01:48:41,159 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 01:48:41,159 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 01:48:41,159 [INFO] INFO: Object Definition:
+2022-05-09 01:48:41,159 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 01:48:41,159 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 01:48:41,160 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 01:48:41,160 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 01:48:41,160 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 01:48:41,160 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 01:48:41,160 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 01:48:41,160 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 01:48:41,160 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 01:48:41,161 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 01:48:41,161 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 01:48:41,161 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 15:58:47,040 [INFO] INFO: Configuration initialized!
+2022-05-09 15:58:47,041 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 15:58:47,041 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 15:59:30,333 [INFO] INFO: Configuration initialized!
+2022-05-09 15:59:30,333 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 15:59:30,333 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 15:59:31,353 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 15:59:31,353 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 15:59:31,353 [INFO] INFO: Variable Definition:
+2022-05-09 15:59:31,353 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 15:59:31,354 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 15:59:31,354 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 15:59:31,354 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 15:59:31,354 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 15:59:31,354 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 15:59:31,355 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 15:59:31,355 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 15:59:31,355 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 15:59:31,355 [INFO] INFO: Object Definition:
+2022-05-09 15:59:31,355 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 15:59:31,355 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 15:59:31,355 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 15:59:31,356 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 15:59:31,356 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 15:59:31,356 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 15:59:31,356 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 15:59:31,356 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 15:59:31,357 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 15:59:31,357 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 15:59:31,357 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 15:59:31,357 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:00:20,540 [INFO] INFO: Configuration initialized!
+2022-05-09 16:00:20,540 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:00:20,546 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:00:21,813 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:00:21,813 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:00:21,813 [INFO] INFO: Variable Definition:
+2022-05-09 16:00:21,814 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:00:21,814 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:00:21,814 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:00:21,814 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:00:21,814 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:00:21,814 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:00:21,814 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:00:21,814 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:00:21,815 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:00:21,815 [INFO] INFO: Object Definition:
+2022-05-09 16:00:21,815 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:00:21,815 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:00:21,815 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:00:21,815 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:00:21,815 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:00:21,815 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:00:21,815 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:00:21,816 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:00:21,816 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:00:21,816 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:00:21,816 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:00:21,816 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:01:04,103 [INFO] INFO: Configuration initialized!
+2022-05-09 16:01:04,103 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:01:04,103 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:01:04,976 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:01:04,977 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:01:04,977 [INFO] INFO: Variable Definition:
+2022-05-09 16:01:04,977 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:01:04,977 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:01:04,977 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:01:04,977 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:01:04,977 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:01:04,978 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:01:04,978 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:01:04,978 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:01:04,978 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:01:04,978 [INFO] INFO: Object Definition:
+2022-05-09 16:01:04,978 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:01:04,978 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:01:04,979 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:01:04,979 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:01:04,979 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:01:04,979 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:01:04,979 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:01:04,979 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:01:04,980 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:01:04,980 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:01:04,980 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:01:04,980 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:01:48,197 [INFO] INFO: Configuration initialized!
+2022-05-09 16:01:48,198 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:01:48,198 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:01:49,086 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:01:49,086 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:01:49,086 [INFO] INFO: Variable Definition:
+2022-05-09 16:01:49,086 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:01:49,086 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:01:49,086 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:01:49,086 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:01:49,087 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:01:49,087 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:01:49,087 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:01:49,087 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:01:49,087 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:01:49,087 [INFO] INFO: Object Definition:
+2022-05-09 16:01:49,088 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:01:49,088 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:01:49,088 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:01:49,088 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:01:49,088 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:01:49,088 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:01:49,088 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:01:49,089 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:01:49,089 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:01:49,089 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:01:49,089 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:01:49,089 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:07:46,731 [INFO] INFO: Configuration initialized!
+2022-05-09 16:07:46,731 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:07:46,732 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:07:47,755 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:07:47,755 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:07:47,755 [INFO] INFO: Variable Definition:
+2022-05-09 16:07:47,755 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:07:47,756 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:07:47,756 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:07:47,756 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:07:47,756 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:07:47,756 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:07:47,756 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:07:47,756 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:07:47,757 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:07:47,757 [INFO] INFO: Object Definition:
+2022-05-09 16:07:47,757 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:07:47,757 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:07:47,757 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:07:47,757 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:07:47,758 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:07:47,758 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:07:47,758 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:07:47,758 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:07:47,758 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:07:47,758 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:07:47,759 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:07:47,759 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:10:11,276 [INFO] INFO: Configuration initialized!
+2022-05-09 16:10:11,276 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:10:11,282 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:10:12,186 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:10:12,187 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:10:12,187 [INFO] INFO: Variable Definition:
+2022-05-09 16:10:12,187 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:10:12,187 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:10:12,187 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:10:12,187 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:10:12,187 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:10:12,188 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:10:12,188 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:10:12,188 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:10:12,188 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:10:12,188 [INFO] INFO: Object Definition:
+2022-05-09 16:10:12,188 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:10:12,188 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:10:12,188 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:10:12,188 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:10:12,189 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:10:12,189 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:10:12,189 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:10:12,189 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:10:12,189 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:10:12,189 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:10:12,190 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:10:12,190 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:11:19,412 [INFO] INFO: Configuration initialized!
+2022-05-09 16:11:19,412 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:11:19,418 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:11:20,309 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:11:20,309 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:11:20,310 [INFO] INFO: Variable Definition:
+2022-05-09 16:11:20,310 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:11:20,310 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:11:20,310 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:11:20,310 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:11:20,310 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:11:20,310 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:11:20,311 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:11:20,311 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:11:20,311 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:11:20,311 [INFO] INFO: Object Definition:
+2022-05-09 16:11:20,311 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:11:20,311 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:11:20,311 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:11:20,311 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:11:20,311 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:11:20,312 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:11:20,312 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:11:20,312 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:11:20,312 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:11:20,312 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:11:20,312 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:11:20,312 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:14:26,788 [INFO] INFO: Configuration initialized!
+2022-05-09 16:14:26,788 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:14:26,788 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:14:27,615 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:14:27,615 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:14:27,616 [INFO] INFO: Variable Definition:
+2022-05-09 16:14:27,616 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:14:27,616 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:14:27,616 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:14:27,616 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:14:27,616 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:14:27,616 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:14:27,616 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:14:27,617 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:14:27,617 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:14:27,617 [INFO] INFO: Object Definition:
+2022-05-09 16:14:27,617 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:14:27,617 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:14:27,617 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:14:27,618 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:14:27,618 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:14:27,618 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:14:27,618 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:14:27,618 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:14:27,618 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:14:27,618 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:14:27,619 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:14:27,619 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:16:07,701 [INFO] INFO: Configuration initialized!
+2022-05-09 16:16:07,701 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:16:07,702 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:16:08,621 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:16:08,621 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:16:08,621 [INFO] INFO: Variable Definition:
+2022-05-09 16:16:08,622 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:16:08,622 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:16:08,622 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:16:08,622 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:16:08,622 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:16:08,622 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:16:08,622 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:16:08,623 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:16:08,623 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:16:08,623 [INFO] INFO: Object Definition:
+2022-05-09 16:16:08,623 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:16:08,623 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:16:08,623 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:16:08,623 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:16:08,624 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:16:08,624 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:16:08,624 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:16:08,624 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:16:08,624 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:16:08,624 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:16:08,625 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:16:08,625 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:16:56,745 [INFO] INFO: Configuration initialized!
+2022-05-09 16:16:56,745 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:16:56,745 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:16:57,572 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:16:57,572 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:16:57,573 [INFO] INFO: Variable Definition:
+2022-05-09 16:16:57,573 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:16:57,573 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:16:57,573 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:16:57,573 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:16:57,574 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:16:57,574 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:16:57,574 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:16:57,574 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:16:57,574 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:16:57,574 [INFO] INFO: Object Definition:
+2022-05-09 16:16:57,575 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:16:57,575 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:16:57,575 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:16:57,575 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:16:57,576 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:16:57,576 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:16:57,576 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:16:57,576 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:16:57,576 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:16:57,576 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:16:57,577 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:16:57,577 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:18:06,843 [INFO] INFO: Configuration initialized!
+2022-05-09 16:18:06,843 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:18:06,843 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:18:07,697 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:18:07,697 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:18:07,697 [INFO] INFO: Variable Definition:
+2022-05-09 16:18:07,697 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:18:07,698 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:18:07,698 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:18:07,698 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:18:07,698 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:18:07,698 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:18:07,699 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:18:07,699 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:18:07,699 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:18:07,699 [INFO] INFO: Object Definition:
+2022-05-09 16:18:07,699 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:18:07,700 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:18:07,700 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:18:07,700 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:18:07,700 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:18:07,700 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:18:07,700 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:18:07,701 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:18:07,701 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:18:07,701 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:18:07,701 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:18:07,701 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:18:31,326 [INFO] INFO: Configuration initialized!
+2022-05-09 16:18:31,327 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:18:31,327 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:18:32,178 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:18:32,178 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:18:32,178 [INFO] INFO: Variable Definition:
+2022-05-09 16:18:32,178 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:18:32,179 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:18:32,179 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:18:32,179 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:18:32,179 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:18:32,179 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:18:32,180 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:18:32,180 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:18:32,180 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:18:32,180 [INFO] INFO: Object Definition:
+2022-05-09 16:18:32,180 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:18:32,181 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:18:32,181 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:18:32,181 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:18:32,181 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:18:32,181 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:18:32,182 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:18:32,182 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:18:32,182 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:18:32,182 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:18:32,182 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:18:32,183 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:20:14,057 [INFO] INFO: Configuration initialized!
+2022-05-09 16:20:14,058 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:20:14,058 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:20:14,940 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:20:14,940 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:20:14,940 [INFO] INFO: Variable Definition:
+2022-05-09 16:20:14,941 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:20:14,941 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:20:14,941 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:20:14,941 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:20:14,941 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:20:14,941 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:20:14,941 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:20:14,942 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:20:14,942 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:20:14,942 [INFO] INFO: Object Definition:
+2022-05-09 16:20:14,942 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:20:14,942 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:20:14,942 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:20:14,943 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:20:14,943 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:20:14,943 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:20:14,943 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:20:14,944 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:20:14,944 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:20:14,944 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:20:14,944 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:20:14,944 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:23:08,810 [INFO] INFO: Configuration initialized!
+2022-05-09 16:23:08,810 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:23:08,811 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:23:09,655 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:23:09,655 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:23:09,656 [INFO] INFO: Variable Definition:
+2022-05-09 16:23:09,656 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:23:09,656 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:23:09,656 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:23:09,656 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:23:09,656 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:23:09,657 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:23:09,657 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:23:09,657 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:23:09,657 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:23:09,657 [INFO] INFO: Object Definition:
+2022-05-09 16:23:09,657 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:23:09,658 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:23:09,658 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:23:09,659 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:23:09,659 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:23:09,659 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:23:09,659 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:23:09,659 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:23:09,659 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:23:09,660 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:23:09,660 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:23:09,660 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:26:06,227 [INFO] INFO: Configuration initialized!
+2022-05-09 16:26:06,227 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:26:06,227 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:26:07,039 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:26:07,039 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:26:07,040 [INFO] INFO: Variable Definition:
+2022-05-09 16:26:07,040 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:26:07,040 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:26:07,040 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:26:07,040 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:26:07,041 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:26:07,041 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:26:07,041 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:26:07,041 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:26:07,041 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:26:07,041 [INFO] INFO: Object Definition:
+2022-05-09 16:26:07,041 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:26:07,042 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:26:07,042 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:26:07,042 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:26:07,042 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:26:07,042 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:26:07,043 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:26:07,043 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:26:07,043 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:26:07,043 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:26:07,043 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:26:07,044 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:27:42,229 [INFO] INFO: Configuration initialized!
+2022-05-09 16:27:42,229 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:27:42,229 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:27:43,175 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:27:43,175 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:27:43,175 [INFO] INFO: Variable Definition:
+2022-05-09 16:27:43,175 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:27:43,175 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:27:43,175 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:27:43,175 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:27:43,176 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:27:43,176 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:27:43,176 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:27:43,176 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:27:43,176 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:27:43,176 [INFO] INFO: Object Definition:
+2022-05-09 16:27:43,176 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:27:43,176 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:27:43,177 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:27:43,177 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:27:43,177 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:27:43,177 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:27:43,177 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:27:43,177 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:27:43,177 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:27:43,178 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:27:43,178 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:27:43,178 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-09 16:29:42,148 [INFO] INFO: Configuration initialized!
+2022-05-09 16:29:42,149 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-09 16:29:42,149 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-09 16:29:42,969 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-09 16:29:42,969 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-09 16:29:42,969 [INFO] INFO: Variable Definition:
+2022-05-09 16:29:42,969 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-09 16:29:42,969 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-09 16:29:42,969 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-09 16:29:42,969 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-09 16:29:42,970 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-09 16:29:42,970 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-09 16:29:42,970 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-09 16:29:42,970 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-09 16:29:42,970 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-09 16:29:42,970 [INFO] INFO: Object Definition:
+2022-05-09 16:29:42,970 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-09 16:29:42,970 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-09 16:29:42,971 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-09 16:29:42,971 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-09 16:29:42,971 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-09 16:29:42,971 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-09 16:29:42,971 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-09 16:29:42,971 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-09 16:29:42,972 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-09 16:29:42,972 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-09 16:29:42,972 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-09 16:29:42,972 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-17 23:42:37,974 [INFO] INFO: Configuration initialized!
+2022-05-17 23:42:37,975 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-17 23:42:37,975 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-17 23:42:39,179 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-17 23:42:39,180 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-17 23:42:39,180 [INFO] INFO: Variable Definition:
+2022-05-17 23:42:39,180 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-17 23:42:39,180 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-17 23:42:39,180 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-17 23:42:39,181 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-17 23:42:39,181 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-17 23:42:39,181 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-17 23:42:39,181 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-17 23:42:39,181 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-17 23:42:39,181 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-17 23:42:39,182 [INFO] INFO: Object Definition:
+2022-05-17 23:42:39,182 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-17 23:42:39,182 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-17 23:42:39,182 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-17 23:42:39,182 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-17 23:42:39,182 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-17 23:42:39,182 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-17 23:42:39,183 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-17 23:42:39,183 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-17 23:42:39,183 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-17 23:42:39,183 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-17 23:42:39,183 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-17 23:42:39,183 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-17 23:45:05,418 [INFO] INFO: Configuration initialized!
+2022-05-17 23:45:05,419 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-17 23:45:05,419 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-17 23:45:06,429 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-17 23:45:06,429 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-17 23:45:06,429 [INFO] INFO: Variable Definition:
+2022-05-17 23:45:06,429 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-17 23:45:06,430 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-17 23:45:06,430 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-17 23:45:06,430 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-17 23:45:06,430 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-17 23:45:06,430 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-17 23:45:06,430 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-17 23:45:06,431 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-17 23:45:06,431 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-17 23:45:06,431 [INFO] INFO: Object Definition:
+2022-05-17 23:45:06,431 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-17 23:45:06,431 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-17 23:45:06,431 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-17 23:45:06,431 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-17 23:45:06,432 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-17 23:45:06,432 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-17 23:45:06,432 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-17 23:45:06,432 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-17 23:45:06,432 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-17 23:45:06,432 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-17 23:45:06,433 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-17 23:45:06,433 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-17 23:47:51,609 [INFO] INFO: Configuration initialized!
+2022-05-17 23:47:51,609 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-17 23:47:51,609 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-17 23:47:52,548 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-17 23:47:52,548 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-17 23:47:52,548 [INFO] INFO: Variable Definition:
+2022-05-17 23:47:52,548 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-17 23:47:52,548 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-17 23:47:52,549 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-17 23:47:52,549 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-17 23:47:52,549 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-17 23:47:52,549 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-17 23:47:52,549 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-17 23:47:52,549 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-17 23:47:52,549 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-17 23:47:52,550 [INFO] INFO: Object Definition:
+2022-05-17 23:47:52,550 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-17 23:47:52,550 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-17 23:47:52,550 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-17 23:47:52,550 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-17 23:47:52,550 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-17 23:47:52,550 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-17 23:47:52,551 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-17 23:47:52,551 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-17 23:47:52,551 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-17 23:47:52,551 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-17 23:47:52,552 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-17 23:47:52,552 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-17 23:50:56,812 [INFO] INFO: Configuration initialized!
+2022-05-17 23:50:56,812 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-17 23:50:56,812 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-17 23:50:57,997 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-17 23:50:57,997 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-17 23:50:57,997 [INFO] INFO: Variable Definition:
+2022-05-17 23:50:57,998 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-17 23:50:57,998 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-17 23:50:57,998 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-17 23:50:57,998 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-17 23:50:57,998 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-17 23:50:57,999 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-17 23:50:57,999 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-17 23:50:57,999 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-17 23:50:57,999 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-17 23:50:57,999 [INFO] INFO: Object Definition:
+2022-05-17 23:50:57,999 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-17 23:50:57,999 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-17 23:50:58,000 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-17 23:50:58,000 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-17 23:50:58,000 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-17 23:50:58,000 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-17 23:50:58,001 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-17 23:50:58,003 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-17 23:50:58,004 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-17 23:50:58,005 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-17 23:50:58,005 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-17 23:50:58,005 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.
+2022-05-17 23:51:17,323 [INFO] INFO: Configuration initialized!
+2022-05-17 23:51:17,324 [MODEL] INFO: Setting Vggtiny_backbone!
+2022-05-17 23:51:17,324 [MODEL] INFO: Enable model backbone pretraining:False
+2022-05-17 23:51:18,216 [MODEL] INFO: Using LightweightOpenpose model arch!
+2022-05-17 23:51:18,216 [INFO] INFO: Welcome to Hyperpose Development Platform!
+2022-05-17 23:51:18,216 [INFO] INFO: Variable Definition:
+2022-05-17 23:51:18,216 [INFO] INFO: parts: 	 the joints of human body, Enum class
+2022-05-17 23:51:18,216 [INFO] INFO: limbs: 	 the limbs of human body, List of tuple.	 example: [(joint index 1, joint index 2),...]
+2022-05-17 23:51:18,216 [INFO] INFO: colors:	the visualize color for each parts, List.	 example: [(0,0,255),...] (optional)
+2022-05-17 23:51:18,217 [INFO] INFO: n_parts:	number of human body joints, int.	 example: n_parts=len(parts)
+2022-05-17 23:51:18,217 [INFO] INFO: n_limbs:	number of human body limbs, int.	 example: n_limbs=len(limbs)
+2022-05-17 23:51:18,217 [INFO] INFO: hin: 	 height of the model input image, int.	 example: 368
+2022-05-17 23:51:18,217 [INFO] INFO: win: 	 width of the model input image, int.	 example: 368
+2022-05-17 23:51:18,217 [INFO] INFO: hout: 	 height of model output heatmap, int.	 example: 46
+2022-05-17 23:51:18,217 [INFO] INFO: wout: 	 wout of model output heatmap, int.	 example: 46
+2022-05-17 23:51:18,217 [INFO] INFO: Object Definition:
+2022-05-17 23:51:18,217 [INFO] INFO: config: a object contains all the configurations used to assemble the model, dataset, and pipeline. easydict object.
+	 return by the `Config.get_config` function.
+
+2022-05-17 23:51:18,217 [INFO] INFO: model: a neural network takes in the image and output the calculated activation map. BasicModel object.
+	 have `forward`, `cal_loss`, `infer`(optional) functions.
+	 custom: users could inherit the Model.BasicModel class for customization.
+	 example: please refer to Model.LightWeightOpenPose class for details. 
+
+2022-05-17 23:51:18,217 [INFO] INFO: dataset: a dataset generator provides train and evaluate dataset. Base_dataset object.
+	 have `get_train_dataset` and `get_eval_dataset` functions.
+	 custom: users could inherit the Dataset.BasicDataset class for customizationn
+	 example: please refer to Datset.CocoDataset class for details.
+
+2022-05-17 23:51:18,217 [INFO] INFO: augmentor: a data augmentor that takes in the image, key point annotation, mask and perform affine transformation for data augmentation. BasicAumentor object.
+	 have `process` and `process_only_image` functions.
+	 custom: users could inherit the Model.BasicAugmentor class for customization.
+	 example: please refer to Model.BasicAugmentor class for details.
+
+2022-05-17 23:51:18,218 [INFO] INFO: preprocessor: a data preprocessor that takes in the image, key point annotation and mask to produce the target heatmap
+	for model to calculate loss and learn. BasicPreProcessor object.
+	 have `process` function.
+	 custom: users could inherit the Model.BasicPreProcessor class for customizationn
+	 example: please refer to Model.openpose.PreProcessor class for details.
+
+2022-05-17 23:51:18,218 [INFO] INFO: postprocessor: a data postprocessor that takes in the predicted heatmaps and infer the human body joints and limbs.
+	 have `process` function. BasicPostProcessor object.
+	 custom: users could inherit the Model.BasicPostProcessor class for customization
+	 example: please refer to the Model.openpose.PostProcessor class for details.
+
+2022-05-17 23:51:18,218 [INFO] INFO: visualizer: a visualizer that takes in the predicted heatmaps and output visualization images for train and evaluation.
+	 have `visualize` and `visualize_comapre` functions. BasicVisualizer object.
+	 custom: users could inherit the Model.BasicVisualizer class for customization.
+	 example: please refer to the Model.openpose.Visualizer class for details.
+
+2022-05-17 23:51:18,218 [INFO] INFO: Development platform basic usage:
+	1.Use the `sets` APIs of Config module to configure the pipeline, choose the algorithm type, the neural network
+	backbone, the dataset etc. that best fit your application scenario.
+	2.Use the `get_model` API of Model module to get the configured model, use `get_dataset` API of dataset module to
+	get the configured dataset, use the `get_train` API of Model module to get the configured train procedure. Then start
+	training! Check the loss values and sample training result images during training.
+	3.Use the `get_eval` API of Model module to get the configured evaluation procedure. evaluate the model you trained. 
+	4.Eport the model to .pb, .onnx, .tflite formats for deployment.
+2022-05-17 23:51:18,218 [INFO] INFO: Development platform custom usage:
+	 Hyperpose enables users to custom model, dataset, augmentor, preprocessor, postprocessor and visualizer.
+	 Users could inherit the corresponding basic class(mentioned above), and implement corresponding the member functions
+	required according to the function annotation, then use Config.set_custom_xxx APIs to set the custom component.
+2022-05-17 23:51:18,218 [INFO] INFO: Additional features:
+	 1.Parallel distributed training with Kungfu.
+	 2.Domain adaption to leverage unlabled data.
+	 3.Neural network backbone pretraining.
+2022-05-17 23:51:18,218 [INFO] INFO: Currently all the procedures are uniformed to be `channels_first` data format.
+2022-05-17 23:51:18,218 [INFO] INFO: Currently all model weights are saved in `npz_dict` format.

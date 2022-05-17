@@ -16,13 +16,13 @@ import onnxruntime as ort
 import json
 import yaml
 
-print(ort.get_device())
+# print(ort.get_device())
 
 ### Model start
 
-hyperpose_model_type = "MobilenetThinOpenpose"
+# hyperpose_model_type = "MobilenetThinOpenpose"
 #available options: Mobilenet, Vggtiny, Vgg19, Resnet18, Resnet50")
-hyperpose_model_backbone = "MobilenetThin"
+# hyperpose_model_backbone = "MobilenetThin"
 hyperpose_model_name = "default_name"
 # hyperpose_weights_path = "hyperpose/Weights/lightweight_openpose.npz"
 hyperpose_weights_path = "hyperpose/Weights/lightweight_openpose_vggtiny.npz"
@@ -41,34 +41,35 @@ model = Model.get_model(config)
 # post processor
 PostProcessorClass = Model.get_postprocessor(config)
 post_processor = PostProcessorClass(parts=model.parts, limbs=model.limbs, hin=model.hin, win=model.win, hout=model.hout,
-                                wout=model.wout, colors=model.colors)
+                                    wout=model.wout, colors=model.colors)
 # image processor
 ImageProcessorClass = Model.get_imageprocessor()
+image_processor = ImageProcessorClass(input_h=model.hin, input_w=model.win)
 
 # load weights
 model.load_weights(hyperpose_weights_path, format="npz_dict")
 model.eval()
 
-# onnx model
-onnx_model = "onnx_models/TinyVGG-V2-HW=342x368.onnx"
-onnx_model_width = 368
-onnx_model_height = 342
+# # onnx model
+# onnx_model = "onnx_models/TinyVGG-V2-HW=342x368.onnx"
+# onnx_model_width = 368
+# onnx_model_height = 342
 
 image_processor = ImageProcessorClass(input_h=model.hin, input_w=model.win)
 
-so = ort.SessionOptions()
+# so = ort.SessionOptions()
 # so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
 # so.intra_op_num_threads = 4
-so.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
+# so.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
 # so.inter_op_num_threads = 4
-so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
+# so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
 
-#CUDAExecutionProvider
-onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CPUExecutionProvider'])
-# onnx_model_session.set_providers(['CUDAExecutionProvider'])
-onnx_input_name = onnx_model_session.get_inputs()[0].name
-onnx_output_name_0 = onnx_model_session.get_outputs()[0].name
-onnx_output_name_1 = onnx_model_session.get_outputs()[1].name
+# #CUDAExecutionProvider
+# onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CPUExecutionProvider'])
+# # onnx_model_session.set_providers(['CUDAExecutionProvider'])
+# onnx_input_name = onnx_model_session.get_inputs()[0].name
+# onnx_output_name_0 = onnx_model_session.get_outputs()[0].name
+# onnx_output_name_1 = onnx_model_session.get_outputs()[1].name
 
 ### Model end
 
@@ -206,6 +207,7 @@ if __name__ == '__main__':
     while (cap.isOpened()):
         ret,frame = cap.read()
         if ret:
+            start_full = time.time()
             frame_count = frame_count + 1
             print(frame_count," of ", length)
 
@@ -215,13 +217,6 @@ if __name__ == '__main__':
             # get only entrance from image
             frame = frame[:400,150:550]
 
-            img_res = cv2.resize(frame, (onnx_model_width,onnx_model_height))
-            img_res.resize((1,3,model.hin,model.win))
-
-            # data = json.dumps({'data':img_res.tolist()})
-            # data = np.array(json.loads(data)['data']).astype('float32')
-
-
             image = image_processor.read_image_rgb_float(frame)
             input_image, scale, pad = image_processor.image_pad_and_scale(image)
             input_image = np.transpose(input_image,[2,0,1])[np.newaxis,:,:,:]
@@ -229,10 +224,12 @@ if __name__ == '__main__':
             #model forward
             start = time.time()
             predict_x = model.forward(input_image)
-            print("time predict: ", time.time()-start)
-            #data = json.dumps({'data':input_image.tolist()})
-            #data = np.array(json.loads(data)['data']).astype('float32')
-            #conf_map, paf_map = onnx_model_session.run([onnx_output_name_0, onnx_output_name_1], {onnx_input_name: data})
+            print("time predict (base): ", time.time()-start)
+            start = time.time()
+            data = json.dumps({'data':input_image.tolist()})
+            data = np.array(json.loads(data)['data']).astype('float32')
+            conf_map, paf_map = onnx_model_session.run([onnx_output_name_0, onnx_output_name_1], {onnx_input_name: data})
+            print("time predict (hyper pose): ", time.time()-start)
 
             # predict_x = dict()
             # predict_x['conf_map'] = conf_map
@@ -240,7 +237,7 @@ if __name__ == '__main__':
             # post process
             start = time.time()
             humans = post_processor.process(predict_x)[0]
-            print("time post: ", time.time()-start)
+            print("time post-proccessing: ", time.time()-start)
             # visualize results (restore detected humans)
             print(f"{len(humans)} humans detected")
             for human_idx,human in enumerate(humans,start=1):
@@ -249,15 +246,16 @@ if __name__ == '__main__':
             
             frame = process_image(image=frame, humans=humans, name="result")
 
-            # cv2.imshow('Video', frame)
+            cv2.imshow('Video', frame)
             out.write(frame)
 
             key = cv2.waitKey(1) & 0xFF
 
+            
+            print("time full: ", time.time()-start_full)
             # If the `q` key was pressed, break from the loop
             if key == ord("q"):
                 break
-
         else:
             break
 

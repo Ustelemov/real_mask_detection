@@ -12,6 +12,8 @@ from ..processor import PltDrawer
 from ..common import to_numpy_dict, image_float_to_uint8
 import time
 
+print(cv2.useOptimized())
+
 class PreProcessor(BasicPreProcessor):
     def __init__(self,parts,limbs,hin,win,hout,wout,colors=None,*args, **kargs):
         self.hin=hin
@@ -79,11 +81,10 @@ class PostProcessor(BasicPostProcessor):
             print("time resize: ", time.time() - start)
         conf_map = conf_map[np.newaxis,:,:,:]
         paf_map = paf_map[np.newaxis,:,:,:]
-        start = time.time()
         peak_map=self.get_peak_map(conf_map)
         start = time.time()
         humans=self.process_paf(peak_map[0],conf_map[0],paf_map[0])
-        print("time rpocess_paf: ", time.time() - start)
+        print("time process_paf: ", time.time() - start)
         return humans
     
     def get_peak_map(self,conf_map):
@@ -92,18 +93,19 @@ class PostProcessor(BasicPostProcessor):
             kernel_size=5
             smoothed=np.zeros(shape=origin.shape)
             channel_num=origin.shape[-1]
+            print(channel_num)
 
             start = time.time()
             for channel_idx in range(0,channel_num):
                 smoothed[0,:,:,channel_idx]=cv2.GaussianBlur(origin[0,:,:,channel_idx],\
                     ksize=(kernel_size,kernel_size),sigmaX=sigma,sigmaY=sigma)
-            print("smoothed: ", time.time() - start)
+            print("time smoothed: ", time.time() - start)
             return smoothed
 
-        start = time.time()
         smoothed = _gauss_smooth(conf_map)
+        start = time.time()
         max_pooled = tf.nn.pool(smoothed, window_shape=(3, 3), pooling_type='MAX', padding='SAME')
-        print("max_pooled: ", time.time() - start)
+        print("time max_pooled: ", time.time() - start)
         return tf.where(tf.equal(smoothed, max_pooled), conf_map, tf.zeros_like(conf_map)).numpy()
     
     def process_paf(self,peak_map,conf_map,paf_map):
