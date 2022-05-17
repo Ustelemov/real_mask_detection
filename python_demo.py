@@ -196,7 +196,6 @@ if __name__ == '__main__':
     tracker = Sort(max_age=12, min_hits=0) 
     face_data = FaceData()
 
-
     cap = cv2.VideoCapture('./input/input.mp4')
     length = int(cap. get(cv2. CAP_PROP_FRAME_COUNT))
     frame_count = 0
@@ -204,6 +203,11 @@ if __name__ == '__main__':
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter('./output/output.mp4', fourcc, 30.0, (400,400))
 
+    count_print = 100
+    time_all = 0
+    time_onnx_run = 0
+    time_base_run = 0
+    time_post_run = 0
 
     while (cap.isOpened()):
         ret,frame = cap.read()
@@ -211,6 +215,12 @@ if __name__ == '__main__':
             start_full = time.time()
             frame_count = frame_count + 1
             print(frame_count," of ", length)
+
+            if frame_count == count_print+1:
+                print("time_all ", time_all/count_print)
+                print("time_onnx_run ", time_onnx_run/count_print)
+                print("time_base_run ", time_base_run/count_print)
+                print("time_post_run ", time_post_run/count_print)
 
             # input video already in (1280,720)
             frame = cv2.resize(frame, (1280,720))
@@ -229,12 +239,14 @@ if __name__ == '__main__':
             #model forward
             start = time.time()
             predict_x = model.forward(input_image)
-            print("time predict (base): ", time.time()-start)
+            time_base_run += time.time()-start
+            
+
             start = time.time()
             data = json.dumps({'data':input_image_onnx.tolist()})
             data = np.array(json.loads(data)['data']).astype('float32')
             conf_map, paf_map = onnx_model_session.run([onnx_output_name_0, onnx_output_name_1], {onnx_input_name: data})
-            print("time predict (onnx pose): ", time.time()-start)
+            time_onnx_run += time.time()-start
 
             # predict_x = dict()
             # predict_x['conf_map'] = conf_map
@@ -242,7 +254,9 @@ if __name__ == '__main__':
             # post process
             start = time.time()
             humans = post_processor.process(predict_x)[0]
-            print("time post-proccessing: ", time.time()-start)
+
+            time_post_run += time.time()-start
+
             # visualize results (restore detected humans)
             print(f"{len(humans)} humans detected")
             for human_idx,human in enumerate(humans,start=1):
@@ -257,7 +271,7 @@ if __name__ == '__main__':
             key = cv2.waitKey(1) & 0xFF
 
             
-            print("time full: ", time.time()-start_full)
+            time_all += time.time()-start_full
             # If the `q` key was pressed, break from the loop
             if key == ord("q"):
                 break
