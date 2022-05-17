@@ -64,12 +64,12 @@ image_processor = ImageProcessorClass(input_h=model.hin, input_w=model.win)
 # so.inter_op_num_threads = 4
 # so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
 
-# #CUDAExecutionProvider
-# onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CPUExecutionProvider'])
-# # onnx_model_session.set_providers(['CUDAExecutionProvider'])
-# onnx_input_name = onnx_model_session.get_inputs()[0].name
-# onnx_output_name_0 = onnx_model_session.get_outputs()[0].name
-# onnx_output_name_1 = onnx_model_session.get_outputs()[1].name
+#CUDAExecutionProvider
+onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CPUExecutionProvider','CUDAExecutionProvider'])
+# onnx_model_session.set_providers(['CUDAExecutionProvider'])
+onnx_input_name = onnx_model_session.get_inputs()[0].name
+onnx_output_name_0 = onnx_model_session.get_outputs()[0].name
+onnx_output_name_1 = onnx_model_session.get_outputs()[1].name
 
 ### Model end
 
