@@ -93,7 +93,7 @@ class PostProcessor(BasicPostProcessor):
             kernel_size=5
             smoothed=np.zeros(shape=origin.shape)
             channel_num=origin.shape[-1]
-            print(channel_num)
+            # print(channel_num)
 
             start = time.time()
             for channel_idx in range(0,channel_num):
@@ -105,7 +105,7 @@ class PostProcessor(BasicPostProcessor):
         smoothed = _gauss_smooth(conf_map)
         start = time.time()
         max_pooled = tf.nn.pool(smoothed, window_shape=(3, 3), pooling_type='MAX', padding='SAME')
-        print("time max_pooled: ", time.time() - start)
+        # print("time max_pooled: ", time.time() - start)
         return tf.where(tf.equal(smoothed, max_pooled), conf_map, tf.zeros_like(conf_map)).numpy()
     
     def process_paf(self,peak_map,conf_map,paf_map):
