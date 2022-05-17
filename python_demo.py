@@ -258,7 +258,7 @@ if __name__ == '__main__':
             time_post_run += time.time()-start
 
             # visualize results (restore detected humans)
-            print(f"{len(humans)} humans detected")
+            # print(f"{len(humans)} humans detected")
             for human_idx,human in enumerate(humans,start=1):
                 human.unpad(pad)
                 human.unscale(scale)
@@ -270,7 +270,6 @@ if __name__ == '__main__':
 
             key = cv2.waitKey(1) & 0xFF
 
-            
             time_all += time.time()-start_full
             # If the `q` key was pressed, break from the loop
             if key == ord("q"):

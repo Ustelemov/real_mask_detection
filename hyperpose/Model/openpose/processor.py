@@ -78,13 +78,13 @@ class PostProcessor(BasicPostProcessor):
             start = time.time()
             conf_map = cv2.resize(conf_map, dsize=(w*self.stride, h*self.stride), interpolation=cv2.INTER_CUBIC)
             paf_map = cv2.resize(paf_map, dsize=(w*self.stride, h*self.stride), interpolation=cv2.INTER_CUBIC)
-            print("time resize: ", time.time() - start)
+            # print("time resize: ", time.time() - start)
         conf_map = conf_map[np.newaxis,:,:,:]
         paf_map = paf_map[np.newaxis,:,:,:]
         peak_map=self.get_peak_map(conf_map)
         start = time.time()
         humans=self.process_paf(peak_map[0],conf_map[0],paf_map[0])
-        print("time process_paf: ", time.time() - start)
+        # print("time process_paf: ", time.time() - start)
         return humans
     
     def get_peak_map(self,conf_map):
@@ -99,7 +99,7 @@ class PostProcessor(BasicPostProcessor):
             for channel_idx in range(0,channel_num):
                 smoothed[0,:,:,channel_idx]=cv2.GaussianBlur(origin[0,:,:,channel_idx],\
                     ksize=(kernel_size,kernel_size),sigmaX=sigma,sigmaY=sigma)
-            print("time smoothed: ", time.time() - start)
+            # print("time smoothed: ", time.time() - start)
             return smoothed
 
         smoothed = _gauss_smooth(conf_map)
