@@ -57,8 +57,8 @@ onnx_model_height = 342
 
 image_processor = ImageProcessorClass(input_h=model.hin, input_w=model.win)
 
-# so = ort.SessionOptions()
-# so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
+so = ort.SessionOptions()
+so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
 # so.intra_op_num_threads = 4
 # so.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
 # so.inter_op_num_threads = 4
