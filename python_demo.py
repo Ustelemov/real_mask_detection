@@ -214,13 +214,20 @@ if __name__ == '__main__':
         if ret:
             start_full = time.time()
             frame_count = frame_count + 1
-            print(frame_count," of ", length)
 
             if frame_count == count_print+1:
-                print("time_all ", time_all/count_print)
-                print("time_onnx_run ", time_onnx_run/count_print)
-                print("time_base_run ", time_base_run/count_print)
-                print("time_post_run ", time_post_run/count_print)
+                maximum = time_onnx_run if time_onnx_run > time_base_run else time_base_run
+
+                print("Info per ", count_print, " frames")
+                print("time_all seconds ms", ((time_all-maximum)*1000)/count_print)
+                print("time_all FPS", 1/((time_all-maximum)/count_print))
+                print("time_onnx_run ms", (time_onnx_run*1000)/count_print)
+                print("time_onnx_run FPS", 1/(time_onnx_run/count_print))
+                print("time_base_run ms", (time_base_run*1000)/count_print)
+                print("time_base_run FPS", 1/(time_base_run/count_print)))
+                print("time_post_run ms", (time_post_run*1000)/count_print)
+                print("time_post_run FPS", 1/(time_post_run/count_print))
+                return
 
             # input video already in (1280,720)
             frame = cv2.resize(frame, (1280,720))
