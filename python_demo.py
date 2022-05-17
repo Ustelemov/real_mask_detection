@@ -227,7 +227,7 @@ if __name__ == '__main__':
                 print("time_base_run FPS", 1/(time_base_run/count_print))
                 print("time_post_run ms", (time_post_run*1000)/count_print)
                 print("time_post_run FPS", 1/(time_post_run/count_print))
-                return
+                break
 
             # input video already in (1280,720)
             frame = cv2.resize(frame, (1280,720))
