@@ -58,19 +58,19 @@ onnx_model_height = 342
 
 image_processor_onnx = ImageProcessorClass(input_h=onnx_model_height, input_w=onnx_model_width)
 
-so = ort.SessionOptions()
-so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
+# so = ort.SessionOptions()
+# so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
 # so.intra_op_num_threads = 4
 # so.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
 # so.inter_op_num_threads = 4
 # so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
 
-#CUDAExecutionProvider
-onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CPUExecutionProvider'])
-# onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CUDAExecutionProvider'])
-onnx_input_name = onnx_model_session.get_inputs()[0].name
-onnx_output_name_0 = onnx_model_session.get_outputs()[0].name
-onnx_output_name_1 = onnx_model_session.get_outputs()[1].name
+# #CUDAExecutionProvider
+# onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CPUExecutionProvider'])
+# # onnx_model_session = ort.InferenceSession(onnx_model, sess_options=so, providers=['CUDAExecutionProvider'])
+# onnx_input_name = onnx_model_session.get_inputs()[0].name
+# onnx_output_name_0 = onnx_model_session.get_outputs()[0].name
+# onnx_output_name_1 = onnx_model_session.get_outputs()[1].name
 
 ### Model end
 
@@ -239,9 +239,9 @@ if __name__ == '__main__':
             input_image, scale, pad = image_processor.image_pad_and_scale(image)
             input_image = np.transpose(input_image,[2,0,1])[np.newaxis,:,:,:]
 
-            image_onnx = image_processor_onnx.read_image_rgb_float(frame)
-            input_image_onnx, scale_onnx, pad_onnx = image_processor_onnx.image_pad_and_scale(image_onnx)
-            input_image_onnx = np.transpose(input_image_onnx,[2,0,1])[np.newaxis,:,:,:]
+            # image_onnx = image_processor_onnx.read_image_rgb_float(frame)
+            # input_image_onnx, scale_onnx, pad_onnx = image_processor_onnx.image_pad_and_scale(image_onnx)
+            # input_image_onnx = np.transpose(input_image_onnx,[2,0,1])[np.newaxis,:,:,:]
 
             #model forward
             start = time.time()
@@ -250,9 +250,9 @@ if __name__ == '__main__':
             
 
             start = time.time()
-            data = json.dumps({'data':input_image_onnx.tolist()})
-            data = np.array(json.loads(data)['data']).astype('float32')
-            conf_map, paf_map = onnx_model_session.run([onnx_output_name_0, onnx_output_name_1], {onnx_input_name: data})
+            # data = json.dumps({'data':input_image_onnx.tolist()})
+            # data = np.array(json.loads(data)['data']).astype('float32')
+            # conf_map, paf_map = onnx_model_session.run([onnx_output_name_0, onnx_output_name_1], {onnx_input_name: data})
             time_onnx_run += time.time()-start
 
             # predict_x = dict()
